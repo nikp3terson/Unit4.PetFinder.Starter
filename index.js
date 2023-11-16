@@ -23,19 +23,20 @@ app.get('/api/v1/pets', (req, res) => {
     const params = req.params
     // send the pets array as a response
     const {pets} = req.params
-    res.send(`All Pets: ${pets}`)
+    res.send(pets)
 });
 
 // get pet by owner with query string
 app.get('/api/v1/pets/owner', (req, res) => {
     // get the owner from the request
-
+    const {owner} = req.query;
 
     // find the pet in the pets array
-    const pet = pets.find(pet => pet.owner === owner);
-    const res = owner
+    const pet = pets.filter(
+    (pet) => pets.owner.toLowerCase() === owner.toLowerCase
+    )
     // send the pet as a response
-    res.send({pet})
+    
 
 
 });
